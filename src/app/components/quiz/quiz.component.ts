@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import quiz_questions from '../../../assets/data/quiz-questions.json';
 
 @Component({
   selector: 'app-quiz',
@@ -20,5 +21,33 @@ export class QuizComponent implements OnInit {
   finished: boolean = false;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (quiz_questions) {
+      this.finished = false;
+      this.title = quiz_questions.title;
+
+      this.questions = quiz_questions.questions;
+      this.questionSelected = this.questions[this.questionIndex];
+
+      this.questionMaxIndex = this.questions.length;
+
+      console.log(this.questionIndex);
+      console.log(this.questionMaxIndex);
+    }
+  }
+
+  playerChoose(value: string) {
+    this.answers.push(value);
+    console.log(this.answers);
+  }
+
+  async nextStep() {
+    this.questionIndex += 1;
+
+    if (this.questionMaxIndex > this.questionIndex) {
+      this.questionSelected = this.questions[this.questionIndex];
+    } else {
+      this.finished = true;
+    }
+  }
 }
