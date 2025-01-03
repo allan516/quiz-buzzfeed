@@ -30,9 +30,6 @@ export class QuizComponent implements OnInit {
       this.questionSelected = this.questions[this.questionIndex];
 
       this.questionMaxIndex = this.questions.length;
-
-      console.log(this.questionIndex);
-      console.log(this.questionMaxIndex);
     }
   }
 
@@ -72,5 +69,11 @@ export class QuizComponent implements OnInit {
       }
     });
     return result;
+  }
+
+  restartGame() {
+    this.answers = [];
+    this.questionIndex = 0;
+    return this.ngOnInit();
   }
 }

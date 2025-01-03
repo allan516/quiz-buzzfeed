@@ -18,5 +18,6 @@
   <div *ngIf="finished" class="quiz-results">
     <h1>O seu resultado é:</h1>
     <p>{{ answerSelected }}</p>
+    <button (click)="restartGame()">Jogar novamente</button>
   </div>
 </div>
