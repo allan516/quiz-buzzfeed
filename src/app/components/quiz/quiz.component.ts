@@ -56,12 +56,8 @@ export class QuizComponent implements OnInit {
   async chekResult(answers: string[]) {
     const result = answers.reduce((previous, current, index, arr) => {
       if (
-        arr.filter((item) => {
-          item === previous;
-        }).length >
-        arr.filter((item) => {
-          item === current;
-        }).length
+        arr.filter((item) => item === previous).length >
+        arr.filter((item) => item === current).length
       ) {
         return previous;
       } else {
